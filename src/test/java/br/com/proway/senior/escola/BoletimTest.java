@@ -20,7 +20,7 @@ public class BoletimTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception{
 		Aluno aluno = new Aluno();
-		Integer periodo=periodoPadrao;
+		Integer periodo = periodoPadrao;
 		boletim = new Boletim(aluno, periodo);
 	}
 	@Test

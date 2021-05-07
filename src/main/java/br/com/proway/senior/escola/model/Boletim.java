@@ -18,6 +18,7 @@ public class Boletim {
 	private Double media;
 	private ArrayList<Prova> provas;
 	
+	
 	/**
 	 * Cria um novo Boletim
 	 * 
@@ -58,6 +59,10 @@ public class Boletim {
 	 * Retorna a média das provas atualizada.
 	 * 
 	 * @return
+	 * 
+	 * 
+	 * para ler uma media, voce tem que ter notas no array, depois voce soma e faz a divisao pela quantidade
+	 * de notas depositadas no array
 	 */
 	public Double getMedia() {
 		return media;
@@ -80,8 +85,9 @@ public class Boletim {
 	 * 
 	 * @param Prova
 	 */
-	public void addProva(Prova prova){
-
+	public void addProva(Prova prova){		
+		this.addProva(prova);		
+		
 	}
 	
 	/**
@@ -102,7 +108,9 @@ public class Boletim {
 	 * 
 	 */
 	public void calcularMedia() {
-		
+		for(int i = 0; i < provas.size() ; i++) {
+			
+		}
 	}
 	
 	/**
@@ -113,5 +121,6 @@ public class Boletim {
 	 */
 	public void removeTodasProvas() {
 		this.provas = new ArrayList<Prova>();
+		
 	}
 }
