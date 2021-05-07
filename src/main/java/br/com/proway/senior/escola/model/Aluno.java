@@ -18,18 +18,8 @@ public class Aluno {
 
 	private String nome;
 
-	/**
-	 * Último sobrenome do aluno.
-	 */
 	private String sobrenome;
 
-	/**
-	 * Primeiro nome do aluno.
-	 */
-
-	/**
-	 * Idade do aluno.
-	 */
 	private Integer idade;
 
 	public String getNome() {
@@ -54,6 +44,13 @@ public class Aluno {
 		return sobrenome;
 	}
 
+	/**
+	 * Define o primeiro Sobrenome do aluno.
+	 * 
+	 * Utilizar somente caracteres alfabéticos.
+	 * 
+	 * @throws Exception
+	 */
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}

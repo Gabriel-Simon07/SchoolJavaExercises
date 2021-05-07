@@ -21,16 +21,19 @@ public class AlunoTest {
 		aluno.setNome("Gabriel1");
 		assertNotNull(aluno.getNome());
 	}
+	
 	@Test (expected = Exception.class)
 	public void testIdadeMaiorQue130() throws Exception{
 		Aluno aluno = new Aluno();
 		aluno.setIdade(12222);				
 	}
+	
 	@Test
 	public void testIdadeValida() throws Exception{
 		Aluno aluno = new Aluno();
 		aluno.setIdade(20);
 	}
+	
 	@Test
 	public void test1IdadeValida() throws Exception{
 		Aluno aluno = new Aluno();
