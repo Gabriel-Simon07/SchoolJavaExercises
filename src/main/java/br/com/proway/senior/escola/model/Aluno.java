@@ -1,38 +1,41 @@
 package br.com.proway.senior.escola.model;
 
+import Tools.Validators;
+
 /**
  * 
  * Pessoa que estuda na escola.
  * 
- * Um Aluno é uma pessoa que estuda na escola. O Aluno frequenta uma Turma 
+ * Um Aluno é uma pessoa que estuda na escola. O Aluno frequenta uma Turma
  * {@link Turma} tem Notas {@link Nota} e Boletim {@link Boletim}.
  * 
  * @author Gabriel Simon <gabrielsimon775@gmail.com>
- *@see Boletim
- *@see Nota
- *@see Turma
+ * @see Boletim
+ * @see Nota
+ * @see Turma
  */
-public class Aluno { 
-	
-	String nome;
-	
+public class Aluno {
+
+	private String nome;
+
 	/**
 	 * Último sobrenome do aluno.
 	 */
-	String sobrenome;
+	private String sobrenome;
 
 	/**
 	 * Primeiro nome do aluno.
 	 */
-	
+
 	/**
-	 * Idade do aluno. 
+	 * Idade do aluno.
 	 */
-	Integer idade;
-	
+	private Integer idade;
+
 	public String getNome() {
 		return nome;
 	}
+
 	/**
 	 * Define o primeiro nome do aluno.
 	 * 
@@ -40,12 +43,11 @@ public class Aluno {
 	 * 
 	 * @throws Exception
 	 */
-	public void setNome(String nome)throws Exception {
-		if(nome.matches(".*[0-9!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]+.*")) {
-			throw new Exception ("Não utilize números e nem caracteres especiais no nome");		
-		}else {			
-			this.nome = nome;
+	public void setNome(String nomeEntrada) throws Exception {
+		if (!Validators.onlyValidChars(nomeEntrada)) {
+			throw new Exception("Utilizar apenas letras");
 		}
+		this.nome = nomeEntrada;
 	}
 
 	public String getSobrenome() {
@@ -60,8 +62,18 @@ public class Aluno {
 		return idade;
 	}
 
-	public void setIdade(Integer idade) {
-		this.idade = idade;
+	/**
+	 * Define a idade do aluno.
+	 * 
+	 * Idade em anos. Deve ser um número inteiro entre 0 e 130.
+	 * 
+	 * @return Integer Idade
+	 */
+	public void setIdade(Integer idadeEntrada) throws Exception {
+		if (idadeEntrada < 0 || idadeEntrada > 130) {
+			throw new Exception("Idade precisa ser menor que 130");
+		}
+		this.idade = idadeEntrada;
 	}
 
 }
