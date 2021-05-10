@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import br.com.proway.senior.escola.model.Boletim;
 import br.com.proway.senior.escola.model.BoletimDao;
 import br.com.proway.senior.escola.model.Prova;
-import br.com.proway.senior.escola.persistence.ArrayListPersistenciaBoletim;
+import br.com.proway.senior.escola.persistence.ArrayListPersistenceBoletim;
 
 public class BoletimController {
 	
@@ -13,7 +13,7 @@ public class BoletimController {
 	
 	private BoletimDao boletimDao;
 	
-	private ArrayListPersistenciaBoletim dbBoletim = new ArrayListPersistenciaBoletim ();	
+	private ArrayListPersistenceBoletim dbBoletim = new ArrayListPersistenceBoletim();	
 	
 	public BoletimController(Boletim boletimEntrada) {
 		this.boletimDao = new  BoletimDao (dbBoletim);

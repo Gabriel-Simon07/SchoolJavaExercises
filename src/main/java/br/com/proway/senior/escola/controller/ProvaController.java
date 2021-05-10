@@ -10,7 +10,7 @@ public class ProvaController {
 	
 	private Prova prova;
 
-	private ArrayListPersistenceProva dbProvas;
+	private ArrayListPersistenceProva dbProvas = new ArrayListPersistenceProva();
 	
 	public ProvaController(Prova prova) {
 		this.provaDao = new ProvaDao(dbProvas);
@@ -18,8 +18,8 @@ public class ProvaController {
 	}
 	
 	public ProvaController(int index) {
-		this.provaDao = new provaDao(dbProvas);
-		this.provaDao = new provaDao.get(index);
+		this.provaDao = new ProvaDao(dbProvas);
+		this.prova = provaDao.get(index);
 	}
 	
 	public Prova addProva() {

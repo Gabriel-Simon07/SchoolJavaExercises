@@ -1,17 +1,14 @@
 package br.com.proway.senior.escola.model;
 
-import java.util.ArrayList;
-
 import br.com.proway.senior.escola.persistence.ArrayListPersistenceProva;
 
 public class ProvaDao {
 
-	Boletim boletim;
-
 	ArrayListPersistenceProva db;
 	
-
-
+	public ProvaDao(ArrayListPersistenceProva db) {
+		this.db=db;	
+	}
 	public void removeAll(){
 		db.removeAll();
 	}
@@ -24,7 +21,7 @@ public class ProvaDao {
 	}
 	
 	public Prova get(Integer Index) {
-		return db.get(intex);
+		return db.get(Index);
 	}
 	
 

@@ -1,21 +1,21 @@
 package br.com.proway.senior.escola.model;
 
-import br.com.proway.senior.escola.persistence.ArrayListPersistenciaBoletim;
+import br.com.proway.senior.escola.persistence.ArrayListPersistenceBoletim;
 
 public class BoletimDao {
 
-	ArrayListPersistenciaBoletim db;
+	ArrayListPersistenceBoletim db;
 	
-	public BoletimDao (ArrayListPersistenciaBoletim db) {
+	public BoletimDao (ArrayListPersistenceBoletim db) {
 		this.db = db; 
 	}
 	
-	public removeAll() {
+	public void removeAll() {
 		db.removeAll();
 	}
 	
 	public void remove(Integer Index) {
-		db.remove(index);
+		db.remove(Index);
 	}
 	
 	public Boletim add(Boletim boletim) {
