@@ -17,13 +17,12 @@ public class Boletim {
 	private Integer periodo;
 	private Double media;
 	private ArrayList<Prova> provas;
-	
-	
+
 	/**
 	 * Cria um novo Boletim
 	 * 
-	 * O Boletim é criado a partir de um aluno e um período. Conforme as provas são adicionadas,
-	 * realiza-se o cálculo atualizado da média.
+	 * O Boletim é criado a partir de um aluno e um período. Conforme as provas são
+	 * adicionadas, realiza-se o cálculo atualizado da média.
 	 * 
 	 * @param aluno
 	 * @param periodo
@@ -45,7 +44,7 @@ public class Boletim {
 	public Aluno getAluno() {
 		return aluno;
 	}
-	
+
 	/**
 	 * Período do formato YYYYMM
 	 * 
@@ -54,20 +53,26 @@ public class Boletim {
 	public Integer getPeriodo() {
 		return periodo;
 	}
-	
+
 	/**
 	 * Retorna a média das provas atualizada.
 	 * 
 	 * @return
 	 * 
 	 * 
-	 * para ler uma media, voce tem que ter notas no array, depois voce soma e faz a divisao pela quantidade
-	 * de notas depositadas no array
+	 *         para ler uma media, voce tem que ter notas no array, depois voce soma
+	 *         e faz a divisao pela quantidade de notas depositadas no array
 	 */
 	public Double getMedia() {
-		return media;
+		Double somaNotas = 0.0;
+		for (int i = 0; i < this.provas.size(); i++) {
+			somaNotas = somaNotas + this.provas.get(i).getNota();
+		}
+	
+		return media  = somaNotas / this.provas.size();																													
 	}
 	
+
 	/**
 	 * Retorna todas as provas.
 	 * 
@@ -76,7 +81,7 @@ public class Boletim {
 	public ArrayList<Prova> getProvas() {
 		return provas;
 	}
-	
+
 	/**
 	 * Adiciona uma avaliação ao boletim.
 	 * 
@@ -85,22 +90,27 @@ public class Boletim {
 	 * 
 	 * @param Prova
 	 */
-	public void addProva(Prova prova){		
-		this.addProva(prova);		
-		
+	public void addProva(Prova prova) {
+		this.addProva(prova);
+
 	}
-	
+
 	/**
 	 * Remove uma avaliação do boletim.
 	 * 
 	 * Ao remover uma prova, a média é recalculada.
 	 * 
-	 * @return 
+	 * @return
 	 */
-	public void removeProva(Prova prova) {
-		
+	public void removeProva(int index) {
+		try {
+			provas.remove(index);			
+		}catch(Exception e){
+			System.out.println("Prova não removida. Erro : " + e.getMessage());
+		}
+		this.calcularMedia();
 	}
-	
+
 	/**
 	 * Faz a média ponderada das provas.
 	 * 
@@ -108,11 +118,17 @@ public class Boletim {
 	 * 
 	 */
 	public void calcularMedia() {
-		for(int i = 0; i < provas.size() ; i++) {
-			
+		int pesosNotas = 0;
+		Double somaNotas =  0.0;
+		for(Prova prova : provas ) {
+			somaNotas += prova.getNota() * prova.getPeso();
+			pesosNotas += prova.getPeso();
 		}
+		this.media = somaNotas / pesosNotas;
 	}
+
 	
+
 	/**
 	 * Remove todas as provas
 	 * 
@@ -121,6 +137,6 @@ public class Boletim {
 	 */
 	public void removeTodasProvas() {
 		this.provas = new ArrayList<Prova>();
-		
+		this.calcularMedia();
 	}
 }

@@ -22,6 +22,10 @@ public class Prova {
 	private Materia materia;
 
 	private double nota;
+	
+	private double peso;
+
+
 
 	/**
 	 * Avaliação de desempenho do aluno.
@@ -74,5 +78,12 @@ public class Prova {
 		if(nota < 0 || nota > this.materia.notaMaxima)
 			throw new Exception("Valor da nota inválido");
 		this.nota = nota;
+	}
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
 	}
 }

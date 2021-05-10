@@ -45,6 +45,7 @@ public class BoletimTest {
 		 Prova prova = new Prova(periodoPadrao, boletim.getAluno(), materia);
 		 try {
 			 prova.setNota(10.0);
+			 boletim.addProva(prova)																									;
 		 }catch(Exception e){
 			fail(e.getMessage());
 		 }
@@ -66,7 +67,7 @@ public class BoletimTest {
 		boletim.removeTodasProvas();
 		boletim.addProva(prova);
 		boletim.addProva(prova);
-		boletim.removeProva(prova);
+		boletim.removeProva(4);
 		assertEquals(1, boletim.getProvas().size());
 	}
 	
@@ -76,7 +77,7 @@ public class BoletimTest {
 		Prova prova = new Prova(periodoPadrao, boletim.getAluno(), materia);
 		boletim.addProva(prova);
 		boletim.removeTodasProvas();
-		assertFalse(boletim.getProvas().size());
+		assertFalse(boletim.getProvas().size() > 0);
 	}
 			
 }
