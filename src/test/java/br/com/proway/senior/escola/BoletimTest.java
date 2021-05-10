@@ -38,18 +38,22 @@ public class BoletimTest {
 		assertEquals(periodoPadrao, (int)boletim.getPeriodo());
 	}
 	
+//	@Test
+//	public void testGetMedia() {
+//		 boletim.resetProvas();
+//		 Materia materia = new Materia();
+//		 Prova prova = new Prova(periodoPadrao, boletim.getAluno(), materia);
+//		 try {
+//			 prova.setNota(10.0);
+//			 boletim.(prova)																									;
+//		 }catch(Exception e){
+//			fail(e.getMessage());
+//		 }
+//		 assertEquals(10.0, boletim.getMedia(), 0.01);
+//	}
 	@Test
 	public void testGetMedia() {
-		 boletim.removeTodasProvas();
-		 Materia materia = new Materia();
-		 Prova prova = new Prova(periodoPadrao, boletim.getAluno(), materia);
-		 try {
-			 prova.setNota(10.0);
-			 boletim.addProva(prova)																									;
-		 }catch(Exception e){
-			fail(e.getMessage());
-		 }
-		 assertEquals(10.0, boletim.getMedia(), 0.01);
+		assertE
 	}
 	
 	@Test
