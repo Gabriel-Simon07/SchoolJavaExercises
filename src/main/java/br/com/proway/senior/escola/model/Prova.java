@@ -25,8 +25,6 @@ public class Prova {
 	
 	private double peso;
 
-
-
 	/**
 	 * Avaliação de desempenho do aluno.
 	 *
@@ -83,7 +81,7 @@ public class Prova {
 		return peso;
 	}
 
-	public void setPeso(double peso) {
+	public void setPeso(int peso) {
 		this.peso = peso;
 	}
 }

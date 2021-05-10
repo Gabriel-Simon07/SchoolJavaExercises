@@ -54,25 +54,9 @@ public class Boletim {
 		return periodo;
 	}
 
-	/**
-	 * Retorna a média das provas atualizada.
-	 * 
-	 * @return
-	 * 
-	 * 
-	 *         para ler uma media, voce tem que ter notas no array, depois voce soma
-	 *         e faz a divisao pela quantidade de notas depositadas no array
-	 */
 	public Double getMedia() {
-		Double somaNotas = 0.0;
-		for (int i = 0; i < this.provas.size(); i++) {
-			somaNotas = somaNotas + this.provas.get(i).getNota();
-		}
-	
-		return media  = somaNotas / this.provas.size();																													
+			return media;					
 	}
-	
-
 	/**
 	 * Retorna todas as provas.
 	 * 
@@ -80,63 +64,21 @@ public class Boletim {
 	 */
 	public ArrayList<Prova> getProvas() {
 		return provas;
+	}	
+	
+	public void setMedia(Double d){
+																											
 	}
-
-	/**
-	 * Adiciona uma avaliação ao boletim.
-	 * 
-	 * Ao adicionar a Prova, a média é recalculada.
-	 * 
-	 * 
-	 * @param Prova
-	 */
-	public void addProva(Prova prova) {
-		this.addProva(prova);
-
-	}
-
-	/**
-	 * Remove uma avaliação do boletim.
-	 * 
-	 * Ao remover uma prova, a média é recalculada.
-	 * 
-	 * @return
-	 */
-	public void removeProva(int index) {
-		try {
-			provas.remove(index);			
-		}catch(Exception e){
-			System.out.println("Prova não removida. Erro : " + e.getMessage());
-		}
-		this.calcularMedia();
-	}
-
-	/**
-	 * Faz a média ponderada das provas.
-	 * 
-	 * Realiza o cálculo da média das notas das provas e atualiza o valor da média.
-	 * 
-	 */
-	public void calcularMedia() {
-		int pesosNotas = 0;
-		Double somaNotas =  0.0;
-		for(Prova prova : provas ) {
-			somaNotas += prova.getNota() * prova.getPeso();
-			pesosNotas += prova.getPeso();
-		}
-		this.media = somaNotas / pesosNotas;
+	
+	public void resetProvas() {
+		this.provas = new ArrayList<Prova>();																								
 	}
 
 	
 
-	/**
-	 * Remove todas as provas
-	 * 
-	 * @return
-	 * 
-	 */
-	public void removeTodasProvas() {
-		this.provas = new ArrayList<Prova>();
-		this.calcularMedia();
-	}
+																								
+
+	
+
+	
 }

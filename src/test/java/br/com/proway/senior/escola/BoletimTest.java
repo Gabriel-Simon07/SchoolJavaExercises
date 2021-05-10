@@ -68,7 +68,7 @@ public class BoletimTest {
 		boletim.addProva(prova);
 		boletim.addProva(prova);
 		boletim.removeProva(4);
-		assertEquals(1, boletim.getProvas().size());
+		assertEquals(1, boletim.getProvas().size());e
 	}
 	
 	@Test
