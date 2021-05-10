@@ -41,5 +41,5 @@ public class ProvaTest {
 			fail(e.getMessage());
 		}
 		assertEquals(10.0, (double) prova.getNota(), 0.01);
-	}
+	}																			
 }

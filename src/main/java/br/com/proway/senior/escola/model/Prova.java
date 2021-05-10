@@ -14,6 +14,8 @@ package br.com.proway.senior.escola.model;
  *
  */
 public class Prova {
+	
+	private Integer id;
 
 	private Integer periodo;
 
@@ -22,6 +24,8 @@ public class Prova {
 	private Materia materia;
 
 	private double nota;
+	
+	private double peso;
 
 	/**
 	 * Avaliação de desempenho do aluno.
@@ -41,6 +45,14 @@ public class Prova {
 
 	public void setPeriodo(Integer periodo) {
 		this.periodo = periodo;
+	}
+	
+	public Integer getPeriodo() {
+		return periodo;
+	}
+	
+	public Aluno getAluno() {
+		return aluno;
 	}
 
 	public void setAluno(Aluno aluno) {
@@ -63,6 +75,14 @@ public class Prova {
 	public double getNota() {
 		return nota;
 	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	/**
 	 * Determina a avaliação do aluno.
@@ -74,5 +94,12 @@ public class Prova {
 		if(nota < 0 || nota > this.materia.notaMaxima)
 			throw new Exception("Valor da nota inválido");
 		this.nota = nota;
+	}
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
 	}
 }

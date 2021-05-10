@@ -35,7 +35,7 @@ public class Aluno {
 	 */
 	public void setNome(String nomeEntrada) throws Exception {
 		if (!Validators.onlyValidChars(nomeEntrada)) {
-			throw new Exception("Utilizar apenas letras");
+			throw new Exception("Utilizar apenas letras no nome");
 		}
 		this.nome = nomeEntrada;
 	}
@@ -51,8 +51,11 @@ public class Aluno {
 	 * 
 	 * @throws Exception
 	 */
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
+	public void setSobrenome(String sobrenomeEntrada) throws Exception {
+		if (!Validators.onlyValidChars(sobrenomeEntrada)) {
+			throw new Exception("Utilizar apenas letras no sobrenome");
+		}
+		this.sobrenome = sobrenomeEntrada;
 	}
 
 	public Integer getIdade() {

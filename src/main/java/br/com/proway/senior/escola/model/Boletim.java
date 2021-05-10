@@ -14,16 +14,16 @@ import java.util.ArrayList;
  */
 public class Boletim {
 	private Aluno aluno;
+	private Integer id;
 	private Integer periodo;
 	private Double media;
 	private ArrayList<Prova> provas;
-	
-	
+
 	/**
 	 * Cria um novo Boletim
 	 * 
-	 * O Boletim é criado a partir de um aluno e um período. Conforme as provas são adicionadas,
-	 * realiza-se o cálculo atualizado da média.
+	 * O Boletim é criado a partir de um aluno e um período. Conforme as provas são
+	 * adicionadas, realiza-se o cálculo atualizado da média.
 	 * 
 	 * @param aluno
 	 * @param periodo
@@ -46,6 +46,15 @@ public class Boletim {
 		return aluno;
 	}
 	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	/**
 	 * Período do formato YYYYMM
 	 * 
@@ -54,20 +63,10 @@ public class Boletim {
 	public Integer getPeriodo() {
 		return periodo;
 	}
-	
-	/**
-	 * Retorna a média das provas atualizada.
-	 * 
-	 * @return
-	 * 
-	 * 
-	 * para ler uma media, voce tem que ter notas no array, depois voce soma e faz a divisao pela quantidade
-	 * de notas depositadas no array
-	 */
+
 	public Double getMedia() {
-		return media;
+			return media;					
 	}
-	
 	/**
 	 * Retorna todas as provas.
 	 * 
@@ -75,52 +74,21 @@ public class Boletim {
 	 */
 	public ArrayList<Prova> getProvas() {
 		return provas;
+	}	
+	
+	public void setMedia(Double d){
+																											
 	}
 	
-	/**
-	 * Adiciona uma avaliação ao boletim.
-	 * 
-	 * Ao adicionar a Prova, a média é recalculada.
-	 * 
-	 * 
-	 * @param Prova
-	 */
-	public void addProva(Prova prova){		
-		this.addProva(prova);		
-		
+	public void resetProvas() {
+		this.provas = new ArrayList<Prova>();																								
 	}
+
 	
-	/**
-	 * Remove uma avaliação do boletim.
-	 * 
-	 * Ao remover uma prova, a média é recalculada.
-	 * 
-	 * @return 
-	 */
-	public void removeProva(Prova prova) {
-		
-	}
+
+																								
+
 	
-	/**
-	 * Faz a média ponderada das provas.
-	 * 
-	 * Realiza o cálculo da média das notas das provas e atualiza o valor da média.
-	 * 
-	 */
-	public void calcularMedia() {
-		for(int i = 0; i < provas.size() ; i++) {
-			
-		}
-	}
+
 	
-	/**
-	 * Remove todas as provas
-	 * 
-	 * @return
-	 * 
-	 */
-	public void removeTodasProvas() {
-		this.provas = new ArrayList<Prova>();
-		
-	}
 }
