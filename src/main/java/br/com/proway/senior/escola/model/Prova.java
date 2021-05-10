@@ -14,6 +14,8 @@ package br.com.proway.senior.escola.model;
  *
  */
 public class Prova {
+	
+	private Integer id;
 
 	private Integer periodo;
 
@@ -44,6 +46,14 @@ public class Prova {
 	public void setPeriodo(Integer periodo) {
 		this.periodo = periodo;
 	}
+	
+	public Integer getPeriodo() {
+		return periodo;
+	}
+	
+	public Aluno getAluno() {
+		return aluno;
+	}
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
@@ -64,6 +74,14 @@ public class Prova {
 	 */
 	public double getNota() {
 		return nota;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**

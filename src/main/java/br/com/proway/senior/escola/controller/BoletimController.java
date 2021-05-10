@@ -3,16 +3,22 @@ package br.com.proway.senior.escola.controller;
 import java.util.ArrayList;
 
 import br.com.proway.senior.escola.model.Boletim;
+import br.com.proway.senior.escola.model.BoletimDao;
 import br.com.proway.senior.escola.model.Prova;
-import br.com.proway.senior.escola.model.ProvaDao;
+import br.com.proway.senior.escola.persistence.ArrayListPersistenciaBoletim;
 
 public class BoletimController {
 	
 	private Boletim boletim;
 	
+	private BoletimDao boletimDao;
+	
+	private ArrayListPersistenciaBoletim dbBoletim = new ArrayListPersistenciaBoletim ();	
+	
 	public BoletimController(Boletim boletimEntrada) {
+		this.boletimDao = new  BoletimDao (dbBoletim);
 		this.boletim = boletimEntrada;
-	}
+	}	
 	
 	/**
 	 * Adiciona uma avaliação ao boletim.
@@ -23,10 +29,23 @@ public class BoletimController {
 	 * @param Prova
 	 */
 	public void addProva(Prova prova) {
-		ArrayList<Prova> provas = boletim.getProvas();
-		provas.add(prova);
+		ProvaController provaController = new ProvaController(prova);
+		if(prova.getId() != null) {
+			provaController.addProva();
+			}else {
+				provaController.get(prova.getId());
+			}
+		boletim.getProvas().add(prova);
 		this.calcularMedia();
 	}
+	
+	public Boletim addBoletim() {
+		if(this.boletim.getId() == null) {
+			return this.boletimDao.add(this.boletim);
+			}
+		return this.boletim;
+	}
+	
 	
 	/**
 	 * Remove uma avaliação do boletim.
@@ -36,13 +55,14 @@ public class BoletimController {
 	 * @return
 	 */
 	public void removeProva(int index) {
+		ProvaController provaController = new ProvaController(index);
+		provaController.removeProva();
 		try {
-			ProvaDao provaDao = new ProvaDao(boletim);
-			provaDao.remove(index);																					
+			boletim.getProvas().remove(index);
+			this.calcularMedia();
 		}catch(Exception e){
-			System.out.println("Prova não removida. Erro : " + e.getMessage());
-		}
-		this.calcularMedia();
+			System.out.println(e.getMessage());
+		}		
 	}
 	
 
@@ -53,9 +73,14 @@ public class BoletimController {
 	 * 
 	 */
 	public void removeTodasProvas() {
-		 ProvaDao provaDao = new ProvaDao(boletim);
-		 provaDao.removeAll();
-		 this.calcularMedia();
+		 ArrayList<Prova> provas = this.boletim.getProvas();
+		 
+		 for(Prova prova : provas) {
+			 ProvaController provaController  = new ProvaController(prova);
+			 provaController.removeProva();
+		 }
+		  this.boletim.getProvas().clear();
+		  this.calcularMedia();
 	}
 	/**
 	 * Faz a média ponderada das provas.
@@ -83,6 +108,6 @@ public class BoletimController {
 	 */
 	
 	public Boletim getBoletim() {
-		return boletim;
+		return this.boletim;
 	}	
 }

@@ -2,24 +2,30 @@ package br.com.proway.senior.escola.model;
 
 import java.util.ArrayList;
 
+import br.com.proway.senior.escola.persistence.ArrayListPersistenceProva;
+
 public class ProvaDao {
 
 	Boletim boletim;
 
-	public ProvaDao(Boletim boletim) {
-		this.boletim = boletim;
-	}
+	ArrayListPersistenceProva db;
+	
 
-	public void remove(int index) {
-		ArrayList<Prova> provas = boletim.getProvas();
-		provas.remove(index);
+
+	public void removeAll(){
+		db.removeAll();
 	}
-	public void removeAll() {
-		boletim.resetProvas();
+	
+	public void remove(Integer index) {
+		db.remove(index);
 	}
-	public void add (Prova prova) {
-		ArrayList<Prova> provas = boletim.getProvas();
-		provas.add(prova);
+	public Prova add(Prova prova) {
+		return db.add(prova);
 	}
+	
+	public Prova get(Integer Index) {
+		return db.get(intex);
+	}
+	
 
 }

@@ -1,6 +1,7 @@
 package br.com.proway.senior.escola;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.BeforeClass;
@@ -37,6 +38,38 @@ public class BoletimTestController {
 		controller.getBoletim();
 		controller.addProva(prova);
 		assertEquals(1, (int) controller.getBoletim().getProvas().size());
+	}
+	@Test 
+	public void testRemoveUmaProva() {
+		Materia materia = new Materia();
+		Boletim boletim = controller.getBoletim();
+		Prova prova = new Prova(202105, boletim.getAluno(), materia);
+		controller.removeTodasProvas();
+		controller.addProva(prova);
+		controller.addProva(prova);
+		controller.removeProva(1);
+		assertEquals(1, boletim.getProvas().size());
+	}
+	@Test
+	public void testRemoverProvaNaoExiste() {
+		Materia materia = new Materia();
+		Boletim boletim = controller.getBoletim();
+		Prova prova = new Prova(202105, boletim.getAluno(),materia);
+		controller.removeTodasProvas();
+		controller.addProva(prova);
+		controller.removeProva(1);
+		assertEquals(1, boletim.getProvas().size());		
+	}
+	@Test
+	public void testRemoverTodasProvas() {
+		Materia materia = new Materia();
+		Boletim boletim = controller.getBoletim();
+		Prova prova = new Prova(202105, boletim.getAluno(),materia);
+		controller.addProva(prova);
+		controller.addProva(prova);
+		controller.addProva(prova);
+		controller.removeTodasProvas();
+		assertFalse(boletim.getProvas().size() > 0);	
 	}
 	
 }
